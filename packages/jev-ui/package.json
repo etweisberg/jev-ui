@@ -1,6 +1,6 @@
 {
   "name": "jev-ui",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Resolve which component to render, how to order a list, and whether to show an affordance \u2014 from calibrated judgments returned by TypeSafe's Jev.",
   "keywords": [
     "react",
@@ -15,35 +15,28 @@
   "type": "module",
   "sideEffects": false,
   "exports": {
-    ".": "./src/index.ts",
-    "./server": "./src/server.ts",
-    "./action": "./src/action.ts"
-  },
-  "publishConfig": {
-    "exports": {
-      ".": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "./server": {
-        "types": "./dist/server.d.ts",
-        "default": "./dist/server.js"
-      },
-      "./action": {
-        "types": "./dist/action.d.ts",
-        "default": "./dist/action.js"
-      }
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./server": {
+      "types": "./dist/server.d.ts",
+      "default": "./dist/server.js"
+    },
+    "./action": {
+      "types": "./dist/action.d.ts",
+      "default": "./dist/action.js"
     }
   },
   "files": [
     "dist",
-    "src",
     "README.md"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "prepack": "bun run build"
   },
   "peerDependencies": {
     "react": ">=18"
