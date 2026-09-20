@@ -145,13 +145,15 @@ export default function Home() {
       </section>
 
       <section>
-        <h2>live here, offline in CI</h2>
+        <h2>the same demos, live or recorded</h2>
         <p className="blurb">
-          Every demo on this site calls the real API as you click it — the panel under each one
-          shows the transport, the token count and what that render cost. Recording is for the test
-          suite: capture each judgment once, then replay it with no key and no network so the tests
-          are deterministic and free. Replay throws on a missing fixture rather than quietly going
-          live. <Link href="/docs/transports-and-testing">Transports and testing →</Link>
+          The demos here replay recorded judgments — a hosted site with a live key would let any
+          visitor spend the owner&rsquo;s money, so the deployment runs without one. Clone the repo,
+          add your key and every one of them calls the real API instead, with no code change: the
+          panel under each demo names the transport it used, the tokens it spent and what that
+          render cost. The same recordings make the test suite deterministic and free, and replay
+          throws on a missing fixture rather than quietly going live.{' '}
+          <Link href="/docs/transports-and-testing">Transports and testing →</Link>
         </p>
       </section>
     </>
