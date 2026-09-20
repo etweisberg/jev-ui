@@ -1,0 +1,42 @@
+{
+  "key": "58a1a8d2cfd90d5d",
+  "model": "jev-1.13.0",
+  "recordedAt": "2026-09-20T20:46:25.371Z",
+  "sent": {
+    "state": {
+      "app": {
+        "product": "Northwind Analytics",
+        "user": "ana",
+        "role": "analyst",
+        "familiarity": "returns often"
+      },
+      "recent_actions": [],
+      "time_spent": "short",
+      "data": {
+        "order": {
+          "shipFrom": "Columbus, Ohio, United States",
+          "shipTo": "Rotterdam, Netherlands",
+          "contents": "40 × cotton t-shirt (wholesale)",
+          "declaredValue": "$7,400",
+          "buyer": "registered business"
+        }
+      }
+    },
+    "questions": {
+      "needs_dangerous_goods": {
+        "type": "noul",
+        "instructions": "Do the contents in `data.order` include anything restricted for air freight, such as batteries, aerosols, or flammable liquids?"
+      }
+    }
+  },
+  "answer": {
+    "type": "noul",
+    "noul": 0.03
+  },
+  "batch": {
+    "inputTokens": 804,
+    "outputTokens": 75,
+    "costUsd": 0.000033768000000000006,
+    "decisions": 4
+  }
+}

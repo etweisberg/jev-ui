@@ -1,0 +1,48 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# The suite never calls the API: unit tests use the mock transport and the browser tests
+# replay committed fixtures. TYPESAFE_API_KEY is deliberately absent here — its absence is
+# what proves replay is really serving the judgments.
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - run: bun install --frozen-lockfile
+
+      - name: Typecheck
+        run: bun run typecheck
+
+      - name: Unit tests
+        run: bun run test
+
+      - name: Build library
+        run: bun run build
+
+      - name: Build docs site
+        run: bun run --filter demo build
+
+      - name: Install browser
+        run: bunx playwright install --with-deps chromium
+
+      - name: End-to-end tests
+        run: bun run e2e
+        env:
+          JEV_TRANSPORT: replay
+
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7

@@ -1,0 +1,45 @@
+{
+  "key": "c2e1f3feae547d99",
+  "model": "jev-1.13.0",
+  "recordedAt": "2026-09-20T20:46:14.865Z",
+  "sent": {
+    "state": {
+      "app": {
+        "product": "Northwind Analytics",
+        "user": "ana",
+        "role": "analyst",
+        "familiarity": "returning"
+      },
+      "recent_actions": [],
+      "time_spent": "short",
+      "data": {
+        "typed": "exp"
+      }
+    },
+    "questions": {
+      "completion": {
+        "type": "choice",
+        "instructions": "Which of these commands did the user mean by what they typed in `data.typed`?",
+        "criteria": {
+          "export_csv": "Export the current view (Reports → Export)",
+          "export_schedule": "Schedule a recurring export (Reports → Schedule)"
+        }
+      }
+    }
+  },
+  "answer": {
+    "type": "choice",
+    "choice": "export_csv",
+    "probabilities": {
+      "export_csv": 0.99,
+      "export_schedule": 0.01
+    },
+    "confidence": 0.99
+  },
+  "batch": {
+    "inputTokens": 423,
+    "outputTokens": 34,
+    "costUsd": 0.000017766,
+    "decisions": 1
+  }
+}

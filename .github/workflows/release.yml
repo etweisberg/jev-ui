@@ -1,0 +1,46 @@
+name: release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+
+      - run: bun install --frozen-lockfile
+
+      # Never publish something that does not typecheck, pass, or build.
+      - run: bun run typecheck
+      - run: bun run test
+      - run: bun run build
+
+      - name: Check the tag matches the package version
+        run: |
+          TAG="${GITHUB_REF_NAME#v}"
+          PKG=$(node -p "require('./packages/jev-ui/package.json').version")
+          if [ -n "$TAG" ] && [ "$TAG" != "$PKG" ]; then
+            echo "tag v$TAG does not match package version $PKG"; exit 1
+          fi
+
+      # publishConfig rewrites exports to ./dist, so consumers get built JS, not TS source.
+      - name: Publish to npm
+        working-directory: packages/jev-ui
+        run: npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

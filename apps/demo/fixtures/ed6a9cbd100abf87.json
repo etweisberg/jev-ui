@@ -1,0 +1,43 @@
+{
+  "key": "ed6a9cbd100abf87",
+  "model": "jev-1.13.0",
+  "recordedAt": "2026-09-20T20:46:15.464Z",
+  "sent": {
+    "state": {
+      "app": {
+        "product": "Northwind Analytics",
+        "user": "ana",
+        "role": "analyst",
+        "familiarity": "returning"
+      },
+      "recent_actions": [],
+      "time_spent": "short",
+      "data": {
+        "typed": "who"
+      }
+    },
+    "questions": {
+      "completion": {
+        "type": "choice",
+        "instructions": "Which of these commands did the user mean by what they typed in `data.typed`?",
+        "criteria": {
+          "users_roles": "Change who can see what (Settings → Roles)"
+        }
+      }
+    }
+  },
+  "answer": {
+    "type": "choice",
+    "choice": "users_roles",
+    "probabilities": {
+      "users_roles": 1
+    },
+    "confidence": 1
+  },
+  "batch": {
+    "inputTokens": 403,
+    "outputTokens": 26,
+    "costUsd": 0.000016926,
+    "decisions": 1
+  }
+}

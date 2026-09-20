@@ -1,0 +1,42 @@
+{
+  "key": "d89cb1895b8669be",
+  "model": "jev-1.13.0",
+  "recordedAt": "2026-09-20T20:46:23.198Z",
+  "sent": {
+    "state": {
+      "app": {
+        "product": "Northwind Analytics",
+        "user": "ana",
+        "role": "analyst",
+        "familiarity": "returns often"
+      },
+      "recent_actions": [],
+      "time_spent": "short",
+      "data": {
+        "order": {
+          "shipFrom": "Columbus, Ohio, United States",
+          "shipTo": "Austin, Texas, United States",
+          "contents": "2 × cotton t-shirt",
+          "declaredValue": "$48",
+          "buyer": "individual"
+        }
+      }
+    },
+    "questions": {
+      "needs_dangerous_goods": {
+        "type": "noul",
+        "instructions": "Do the contents in `data.order` include anything restricted for air freight, such as batteries, aerosols, or flammable liquids?"
+      }
+    }
+  },
+  "answer": {
+    "type": "noul",
+    "noul": 0.03
+  },
+  "batch": {
+    "inputTokens": 777,
+    "outputTokens": 75,
+    "costUsd": 0.000032634,
+    "decisions": 4
+  }
+}

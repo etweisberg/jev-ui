@@ -1,0 +1,42 @@
+{
+  "key": "fbc5a5222a2c5c08",
+  "model": "jev-1.13.0",
+  "recordedAt": "2026-09-20T20:46:25.108Z",
+  "sent": {
+    "state": {
+      "app": {
+        "product": "Northwind Analytics",
+        "user": "ana",
+        "role": "analyst",
+        "familiarity": "first visit"
+      },
+      "recent_actions": [],
+      "time_spent": "short",
+      "data": {
+        "order": {
+          "shipFrom": "Columbus, Ohio, United States",
+          "shipTo": "Rotterdam, Netherlands",
+          "contents": "40 × cotton t-shirt (wholesale)",
+          "declaredValue": "$7,400",
+          "buyer": "registered business"
+        }
+      }
+    },
+    "questions": {
+      "needs_tax_id": {
+        "type": "noul",
+        "instructions": "Does the buyer in `data.order` appear to be a registered business rather than an individual, so that a tax registration number should be collected?"
+      }
+    }
+  },
+  "answer": {
+    "type": "noul",
+    "noul": 0.97
+  },
+  "batch": {
+    "inputTokens": 804,
+    "outputTokens": 75,
+    "costUsd": 0.000033768000000000006,
+    "decisions": 4
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "key": "b1ba68d52a30df95",
+  "model": "jev-1.13.0",
+  "recordedAt": "2026-09-20T20:46:24.260Z",
+  "sent": {
+    "state": {
+      "app": {
+        "product": "Northwind Analytics",
+        "user": "ana",
+        "role": "analyst",
+        "familiarity": "returns often"
+      },
+      "recent_actions": [],
+      "time_spent": "short",
+      "data": {
+        "order": {
+          "shipFrom": "Columbus, Ohio, United States",
+          "shipTo": "Lyon, France",
+          "contents": "1 × lithium battery pack, 2 × cotton t-shirt",
+          "declaredValue": "$310",
+          "buyer": "individual"
+        }
+      }
+    },
+    "questions": {
+      "needs_customs": {
+        "type": "noul",
+        "instructions": "Does the shipment described in `data.order` cross an international border, so that a customs declaration is required?"
+      }
+    }
+  },
+  "answer": {
+    "type": "noul",
+    "noul": 0.99
+  },
+  "batch": {
+    "inputTokens": 795,
+    "outputTokens": 75,
+    "costUsd": 0.000033390000000000004,
+    "decisions": 4
+  }
+}

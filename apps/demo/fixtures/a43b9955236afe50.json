@@ -1,0 +1,47 @@
+{
+  "key": "a43b9955236afe50",
+  "model": "jev-1.13.0",
+  "recordedAt": "2026-09-20T20:46:14.235Z",
+  "sent": {
+    "state": {
+      "app": {
+        "product": "Northwind Analytics",
+        "user": "ana",
+        "role": "analyst",
+        "familiarity": "returning"
+      },
+      "recent_actions": [],
+      "time_spent": "short",
+      "data": {
+        "typed": "bil"
+      }
+    },
+    "questions": {
+      "completion": {
+        "type": "choice",
+        "instructions": "Which of these commands did the user mean by what they typed in `data.typed`?",
+        "criteria": {
+          "billing_card": "Change the card we bill (Settings → Billing)",
+          "billing_invoices": "Download past invoices (Settings → Billing → History)",
+          "billing_plan": "Switch plan (Settings → Billing → Plan)"
+        }
+      }
+    }
+  },
+  "answer": {
+    "type": "choice",
+    "choice": "billing_plan",
+    "probabilities": {
+      "billing_invoices": 0.23,
+      "billing_card": 0.17,
+      "billing_plan": 0.6
+    },
+    "confidence": 0.39
+  },
+  "batch": {
+    "inputTokens": 448,
+    "outputTokens": 44,
+    "costUsd": 0.000018816,
+    "decisions": 1
+  }
+}

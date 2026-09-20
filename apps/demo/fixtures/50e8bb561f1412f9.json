@@ -1,0 +1,53 @@
+{
+  "key": "50e8bb561f1412f9",
+  "model": "jev-1.13.0",
+  "recordedAt": "2026-09-20T20:46:18.782Z",
+  "sent": {
+    "state": {
+      "app": {
+        "product": "Northwind Analytics",
+        "user": "ana",
+        "role": "analyst",
+        "familiarity": "returning"
+      },
+      "recent_actions": [
+        "opened Q3 revenue",
+        "filtered to EMEA",
+        "compared against plan"
+      ],
+      "time_spent": "short",
+      "data": {
+        "item": "[activity] Headcount plan approved for Q1"
+      }
+    },
+    "questions": {
+      "feed_p2f": {
+        "type": "score",
+        "instructions": "How well does the feed card in `data.item` match what the person has been doing, as shown in `recent_actions`?",
+        "criteria": [
+          "Unrelated to what the person has been doing",
+          "Same product area, but not what they are working on",
+          "Clearly useful for what they are working on",
+          "Directly about the thing they are stuck on right now"
+        ]
+      }
+    }
+  },
+  "answer": {
+    "type": "score",
+    "score": 0.88,
+    "probabilities": {
+      "0": 0.24,
+      "1": 0.65,
+      "2": 0.11,
+      "3": 0
+    },
+    "confidence": 0.64
+  },
+  "batch": {
+    "inputTokens": 1936,
+    "outputTokens": 196,
+    "costUsd": 0.00008131200000000001,
+    "decisions": 12
+  }
+}

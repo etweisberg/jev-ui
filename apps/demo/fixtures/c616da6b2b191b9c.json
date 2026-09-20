@@ -1,0 +1,42 @@
+{
+  "key": "c616da6b2b191b9c",
+  "model": "jev-1.13.0",
+  "recordedAt": "2026-09-20T20:46:24.509Z",
+  "sent": {
+    "state": {
+      "app": {
+        "product": "Northwind Analytics",
+        "user": "ana",
+        "role": "analyst",
+        "familiarity": "returning"
+      },
+      "recent_actions": [],
+      "time_spent": "short",
+      "data": {
+        "order": {
+          "shipFrom": "Columbus, Ohio, United States",
+          "shipTo": "Lyon, France",
+          "contents": "1 × lithium battery pack, 2 × cotton t-shirt",
+          "declaredValue": "$310",
+          "buyer": "individual"
+        }
+      }
+    },
+    "questions": {
+      "needs_tax_id": {
+        "type": "noul",
+        "instructions": "Does the buyer in `data.order` appear to be a registered business rather than an individual, so that a tax registration number should be collected?"
+      }
+    }
+  },
+  "answer": {
+    "type": "noul",
+    "noul": 0.03
+  },
+  "batch": {
+    "inputTokens": 796,
+    "outputTokens": 75,
+    "costUsd": 0.000033432,
+    "decisions": 4
+  }
+}

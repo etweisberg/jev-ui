@@ -1,0 +1,54 @@
+{
+  "key": "4b3c142c5561a042",
+  "model": "jev-1.13.0",
+  "recordedAt": "2026-09-20T20:46:12.999Z",
+  "sent": {
+    "state": {
+      "app": {
+        "product": "Northwind Analytics",
+        "user": "ana",
+        "role": "analyst",
+        "familiarity": "returning"
+      },
+      "recent_actions": [],
+      "time_spent": "short"
+    },
+    "questions": {
+      "menu_order": {
+        "type": "choice",
+        "instructions": "Which of these menu actions is the user most likely to want next, given what they just did in `recent_actions`?",
+        "criteria": {
+          "new_report": "New report — Start a blank report from scratch",
+          "open_recent": "Open recent — Reopen a report from the last few days",
+          "export_csv": "Export CSV — Download the current view as a spreadsheet",
+          "schedule": "Schedule delivery — Email this report on a recurring basis",
+          "share": "Share with team — Grant teammates access to this report",
+          "retry_import": "Retry import — Run the last failed data import again",
+          "view_errors": "View import errors — Inspect rows that failed to load",
+          "settings": "Workspace settings — Change billing, members, and defaults"
+        }
+      }
+    }
+  },
+  "answer": {
+    "type": "choice",
+    "choice": "open_recent",
+    "probabilities": {
+      "view_errors": 0,
+      "retry_import": 0,
+      "open_recent": 0.57,
+      "new_report": 0.43,
+      "schedule": 0,
+      "share": 0,
+      "export_csv": 0,
+      "settings": 0
+    },
+    "confidence": 0.51
+  },
+  "batch": {
+    "inputTokens": 539,
+    "outputTokens": 80,
+    "costUsd": 0.000022638,
+    "decisions": 1
+  }
+}

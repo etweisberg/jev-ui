@@ -1,0 +1,15 @@
+# secrets
+.env
+.env.local
+.env*.local
+
+# deps / build
+node_modules/
+dist/
+.next/
+*.tsbuildinfo
+
+# test artifacts
+test-results/
+playwright-report/
+.playwright/

@@ -1,0 +1,95 @@
+{
+  "key": "543439be6b926ede",
+  "model": "jev-1.13.0",
+  "recordedAt": "2026-09-20T20:36:28.974Z",
+  "sent": {
+    "state": {
+      "app": {
+        "product": "Northwind Analytics",
+        "user": "rob",
+        "role": "analyst",
+        "familiarity": "returning"
+      },
+      "recent_actions": [],
+      "time_spent": "short",
+      "data": {
+        "question": "What is total revenue right now?",
+        "series": [
+          {
+            "quarter": "Q1 24",
+            "emea": 412,
+            "amer": 690,
+            "apac": 201
+          },
+          {
+            "quarter": "Q2 24",
+            "emea": 448,
+            "amer": 705,
+            "apac": 233
+          },
+          {
+            "quarter": "Q3 24",
+            "emea": 501,
+            "amer": 688,
+            "apac": 259
+          },
+          {
+            "quarter": "Q4 24",
+            "emea": 540,
+            "amer": 731,
+            "apac": 288
+          },
+          {
+            "quarter": "Q1 25",
+            "emea": 585,
+            "amer": 742,
+            "apac": 301
+          },
+          {
+            "quarter": "Q2 25",
+            "emea": 618,
+            "amer": 760,
+            "apac": 342
+          },
+          {
+            "quarter": "Q3 25",
+            "emea": 671,
+            "amer": 771,
+            "apac": 366
+          }
+        ]
+      }
+    },
+    "questions": {
+      "chart_view": {
+        "type": "choice",
+        "instructions": "Which view best answers the question in `data.question` about the revenue figures in `data.series`?",
+        "criteria": {
+          "line": "The question is about a trend, a direction, or how something changed across many time periods.",
+          "bars": "The question compares a few named categories against one another at a single point in time.",
+          "table": "The question needs exact per-row numbers, or several columns read together.",
+          "stat": "The question asks for one headline number and nothing else.",
+          "__none__": "None of the other options fits what the state describes."
+        }
+      }
+    }
+  },
+  "answer": {
+    "type": "choice",
+    "choice": "stat",
+    "probabilities": {
+      "stat": 0.93,
+      "bars": 0.01,
+      "line": 0,
+      "__none__": 0,
+      "table": 0.06
+    },
+    "confidence": 0.9
+  },
+  "batch": {
+    "inputTokens": 806,
+    "outputTokens": 55,
+    "costUsd": 0.000033852,
+    "decisions": 1
+  }
+}

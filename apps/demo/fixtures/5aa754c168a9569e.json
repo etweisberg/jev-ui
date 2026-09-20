@@ -1,0 +1,44 @@
+{
+  "key": "5aa754c168a9569e",
+  "model": "jev-1.13.0",
+  "recordedAt": "2026-09-20T20:46:25.108Z",
+  "sent": {
+    "state": {
+      "app": {
+        "product": "Northwind Analytics",
+        "user": "ana",
+        "role": "analyst",
+        "familiarity": "first visit"
+      },
+      "recent_actions": [],
+      "time_spent": "short"
+    },
+    "questions": {
+      "guidance": {
+        "type": "score",
+        "instructions": "How much explanation does this person need on a shipping form, given `app.familiarity` and what they have done in `recent_actions`?",
+        "criteria": [
+          "Knows this form well; labels alone are enough",
+          "Has done this before but may need a reminder on the unusual fields",
+          "New to this; every non-obvious field needs a sentence of explanation"
+        ]
+      }
+    }
+  },
+  "answer": {
+    "type": "score",
+    "score": 2,
+    "probabilities": {
+      "0": 0,
+      "1": 0,
+      "2": 1
+    },
+    "confidence": 1
+  },
+  "batch": {
+    "inputTokens": 804,
+    "outputTokens": 75,
+    "costUsd": 0.000033768000000000006,
+    "decisions": 4
+  }
+}

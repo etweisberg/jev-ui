@@ -1,0 +1,53 @@
+{
+  "key": "b753f3f5221c4387",
+  "model": "jev-1.13.0",
+  "recordedAt": "2026-09-20T20:46:17.520Z",
+  "sent": {
+    "state": {
+      "app": {
+        "product": "Northwind Analytics",
+        "user": "ana",
+        "role": "analyst",
+        "familiarity": "returning"
+      },
+      "recent_actions": [
+        "uploaded contacts.csv",
+        "import failed: 12 rows rejected",
+        "opened import log"
+      ],
+      "time_spent": "short",
+      "data": {
+        "item": "[guide] How to read the revenue waterfall chart"
+      }
+    },
+    "questions": {
+      "feed_p1b": {
+        "type": "score",
+        "instructions": "How well does the feed card in `data.item` match what the person has been doing, as shown in `recent_actions`?",
+        "criteria": [
+          "Unrelated to what the person has been doing",
+          "Same product area, but not what they are working on",
+          "Clearly useful for what they are working on",
+          "Directly about the thing they are stuck on right now"
+        ]
+      }
+    }
+  },
+  "answer": {
+    "type": "score",
+    "score": 0.78,
+    "probabilities": {
+      "0": 0.22,
+      "1": 0.78,
+      "2": 0,
+      "3": 0
+    },
+    "confidence": 0.77
+  },
+  "batch": {
+    "inputTokens": 1938,
+    "outputTokens": 196,
+    "costUsd": 0.000081396,
+    "decisions": 12
+  }
+}

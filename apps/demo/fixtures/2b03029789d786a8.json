@@ -1,0 +1,42 @@
+{
+  "key": "2b03029789d786a8",
+  "model": "jev-1.13.0",
+  "recordedAt": "2026-09-20T20:46:23.198Z",
+  "sent": {
+    "state": {
+      "app": {
+        "product": "Northwind Analytics",
+        "user": "ana",
+        "role": "analyst",
+        "familiarity": "returns often"
+      },
+      "recent_actions": [],
+      "time_spent": "short",
+      "data": {
+        "order": {
+          "shipFrom": "Columbus, Ohio, United States",
+          "shipTo": "Austin, Texas, United States",
+          "contents": "2 × cotton t-shirt",
+          "declaredValue": "$48",
+          "buyer": "individual"
+        }
+      }
+    },
+    "questions": {
+      "needs_customs": {
+        "type": "noul",
+        "instructions": "Does the shipment described in `data.order` cross an international border, so that a customs declaration is required?"
+      }
+    }
+  },
+  "answer": {
+    "type": "noul",
+    "noul": 0.02
+  },
+  "batch": {
+    "inputTokens": 777,
+    "outputTokens": 75,
+    "costUsd": 0.000032634,
+    "decisions": 4
+  }
+}
