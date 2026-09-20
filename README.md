@@ -199,7 +199,7 @@ Running the site yourself, with your own key, makes every demo call the real API
 ```bash
 git clone https://github.com/etweisberg/jev-ui
 cd jev-ui && bun install
-echo "TYPESAFE_API_KEY=sk-..." > apps/demo/.env
+echo "TYPESAFE_API_KEY=apikey-..." > apps/demo/.env
 bun run dev                       # http://localhost:3111
 ```
 

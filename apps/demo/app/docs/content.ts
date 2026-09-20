@@ -48,7 +48,7 @@ export const DOCS: DocPage[] = [
         t: 'p',
         text: 'The key never reaches the browser. Put it in the environment file at the root of your app — Next.js loads it with no extra tooling, and so does bun.',
       },
-      { t: 'code', lang: 'bash', text: '# .env\nTYPESAFE_API_KEY=sk-...' },
+      { t: 'code', lang: 'bash', text: '# .env\nTYPESAFE_API_KEY=apikey-...' },
       {
         t: 'note',
         text: 'Add that file to your .gitignore before you paste anything into it. With no key the library falls back to the replay transport, so a checkout without one still runs against recorded fixtures rather than crashing.',

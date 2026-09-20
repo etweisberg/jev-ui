@@ -9,7 +9,7 @@ bun install
 Add a key to `apps/demo/.env` if you want the demos to call the real API:
 
 ```bash
-echo "TYPESAFE_API_KEY=sk-..." > apps/demo/.env
+echo "TYPESAFE_API_KEY=apikey-..." > apps/demo/.env
 bun run --filter demo check:key   # confirms the key and the response shape
 bun run dev                       # http://localhost:3111
 ```
@@ -95,8 +95,11 @@ around it. Everything outside those markers is shown verbatim, and a test enforc
 
 ## CI and releases
 
-`ci.yml` runs on every push and pull request: typecheck, unit tests, both builds, then the
-browser suite with no API key present.
+`ci.yml` runs on every push and pull request that touches code: build, typecheck, unit
+tests, then the browser suite with no API key present. Documentation-only changes are
+skipped via `paths-ignore`, and Vercel skips its build for the same reason through
+`ignoreCommand` in `vercel.json` — it deploys only when `apps/demo`, `packages/jev-ui`, or
+the build configuration moved.
 
 `release.yml` publishes on a `v*` tag. It re-runs typecheck, tests and build, refuses to
 publish if the tag does not match the version in `packages/jev-ui/package.json`, publishes
