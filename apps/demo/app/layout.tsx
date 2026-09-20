@@ -187,7 +187,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           @media (min-width: 980px) { .cols { grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr); } }
 
           /* the jev-ui Inspector reads these, so it inherits the host theme */
-          [data-jev-inspector] {
+          /* Scoped to the Inspector originally; the state editor is used on its own now,
+             so the theme has to reach anything the library renders. */
+          :root {
             --jev-bg: var(--panel);
             --jev-fg: var(--fg);
             --jev-muted: var(--muted);

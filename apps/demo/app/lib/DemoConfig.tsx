@@ -32,9 +32,10 @@ export function DemoConfig() {
         {openState ? (
           <div style={{ marginTop: 12 }}>
             <JevStateEditor
+              // Only fields with a genuinely fixed set of values. Anything else stays a
+              // text box, because your own fields can hold whatever you want.
               options={{
                 user: ['ana', 'rob'],
-                role: ['analyst', 'administrator'],
                 familiarity: ['first visit', 'returning', 'returns often'],
               }}
             />

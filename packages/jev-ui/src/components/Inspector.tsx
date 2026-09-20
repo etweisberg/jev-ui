@@ -481,7 +481,11 @@ export function JevStateEditor({
                   style={{
                     ...chip,
                     ...(String(value) === choice
-                      ? { borderColor: 'var(--jev-accent, #999)', color: 'var(--jev-accent, #999)' }
+                      ? {
+                          borderColor: 'var(--jev-accent, #b64e26)',
+                          color: 'var(--jev-accent, #b64e26)',
+                          fontWeight: 600,
+                        }
                       : {}),
                   }}
                   aria-pressed={String(value) === choice}
