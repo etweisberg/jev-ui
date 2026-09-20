@@ -19,14 +19,14 @@ bun add jev-ui        # npm install jev-ui · pnpm add jev-ui · yarn add jev-ui
 
 ### 2. Get an API key
 
-Create one in the [TypeSafe console](https://console.typesafe.ai). It looks like `sk-...`.
+Create one in the [TypeSafe console](https://console.typesafe.ai). It looks like `apikey-...`.
 
 ### 3. Put it in your environment
 
 Create `.env` in the root of your Next.js app:
 
 ```bash
-TYPESAFE_API_KEY=sk-your-key-here
+TYPESAFE_API_KEY=apikey-your-key-here
 ```
 
 Add it to `.gitignore` **before** you paste the key in:
