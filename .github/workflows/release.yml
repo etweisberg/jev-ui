@@ -26,14 +26,14 @@ jobs:
           registry-url: https://registry.npmjs.org
 
       # Trusted publishing needs npm 11.5.1 or later; the bundled npm may be older.
-      - run: npm install -g npm@latest
+      - run: npm install -g npm@11.10.1
 
       - run: bun install --frozen-lockfile
 
       # Never publish something that does not typecheck, pass, or build.
+      - run: bun run build
       - run: bun run typecheck
       - run: bun run test
-      - run: bun run build
 
       - name: Check the tag matches the package version
         id: version

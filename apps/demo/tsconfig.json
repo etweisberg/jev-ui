@@ -24,6 +24,15 @@
     "paths": {
       "@/*": [
         "./*"
+      ],
+      "jev-ui": [
+        "../../packages/jev-ui/src/index.ts"
+      ],
+      "jev-ui/server": [
+        "../../packages/jev-ui/src/server.ts"
+      ],
+      "jev-ui/action": [
+        "../../packages/jev-ui/src/action.ts"
       ]
     },
     "allowJs": true

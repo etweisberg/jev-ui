@@ -20,14 +20,14 @@ jobs:
 
       - run: bun install --frozen-lockfile
 
+      - name: Build library
+        run: bun run build
+
       - name: Typecheck
         run: bun run typecheck
 
       - name: Unit tests
         run: bun run test
-
-      - name: Build library
-        run: bun run build
 
       - name: Build docs site
         run: bun run --filter demo build
