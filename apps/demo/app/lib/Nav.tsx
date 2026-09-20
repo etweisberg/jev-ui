@@ -49,7 +49,7 @@ export function Nav() {
           aria-expanded={open}
           aria-haspopup="menu"
           onClick={() => setOpen((value) => !value)}
-          style={{ cursor: 'pointer', border: '1px solid transparent', font: 'inherit', background: 'transparent' }}
+          style={{ cursor: 'pointer', border: '1px solid transparent', font: 'inherit' }}
         >
           demos {open ? '▴' : '▾'}
         </button>

@@ -12,6 +12,12 @@ const config: NextConfig = {
   // judgment and make the Inspector's request count a lie. The batching behaviour
   // this demo exists to show is only legible with it off.
   reactStrictMode: false,
+  // Recorded judgments are read at runtime through a computed path, which file tracing
+  // cannot follow — without this they are missing from the deployed function and every
+  // replay throws.
+  outputFileTracingIncludes: {
+    '/**': ['./fixtures/**'],
+  },
   webpack: (webpackConfig) => {
     // jev-ui's imports carry .js specifiers, which is what Node ESM requires of
     // published output. A bundler consuming the TypeScript source needs to be told

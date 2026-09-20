@@ -191,7 +191,7 @@ after every change if you want to persist or mirror it.
 
 ## Docs and demos
 
-Full reference and five live demos: **[the docs site](https://jev-ui-iota.vercel.app)**.
+Full reference and five live demos: **[the docs site](https://docs.jev-ui.dev)**.
 
 Each demo shows its own source read off disk, the question it generated, the state it sent,
 the answer it got back, and what that render cost. `/llms.txt` serves the whole
