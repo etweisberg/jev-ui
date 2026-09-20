@@ -9,8 +9,10 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      # id-token lets npm authenticate with a short-lived OIDC token instead of a stored
+      # secret. contents: write is for cutting the GitHub release afterwards.
       id-token: write
+      contents: write
     steps:
       - uses: actions/checkout@v4
 
@@ -23,6 +25,9 @@ jobs:
           node-version: 22
           registry-url: https://registry.npmjs.org
 
+      # Trusted publishing needs npm 11.5.1 or later; the bundled npm may be older.
+      - run: npm install -g npm@latest
+
       - run: bun install --frozen-lockfile
 
       # Never publish something that does not typecheck, pass, or build.
@@ -31,16 +36,31 @@ jobs:
       - run: bun run build
 
       - name: Check the tag matches the package version
+        id: version
         run: |
-          TAG="${GITHUB_REF_NAME#v}"
           PKG=$(node -p "require('./packages/jev-ui/package.json').version")
-          if [ -n "$TAG" ] && [ "$TAG" != "$PKG" ]; then
-            echo "tag v$TAG does not match package version $PKG"; exit 1
+          echo "version=$PKG" >> "$GITHUB_OUTPUT"
+          if [ "${{ github.event_name }}" = "push" ]; then
+            TAG="${GITHUB_REF_NAME#v}"
+            if [ "$TAG" != "$PKG" ]; then
+              echo "tag v$TAG does not match package version $PKG"; exit 1
+            fi
           fi
 
-      # publishConfig rewrites exports to ./dist, so consumers get built JS, not TS source.
+      # No NODE_AUTH_TOKEN: npm exchanges the workflow's OIDC token for a short-lived
+      # publish token. Configure the trusted publisher once at
+      # npmjs.com -> jev-ui -> Settings -> Trusted Publisher (repo etweisberg/jev-ui,
+      # workflow release.yml). publishConfig rewrites exports to ./dist, so consumers get
+      # built JS and .d.ts rather than TypeScript source.
       - name: Publish to npm
         working-directory: packages/jev-ui
-        run: npm publish --access public --provenance
+        run: npm publish --access public
+
+      - name: Cut the GitHub release
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "v${{ steps.version.outputs.version }}" \
+            --title "v${{ steps.version.outputs.version }}" \
+            --generate-notes \
+            --verify-tag

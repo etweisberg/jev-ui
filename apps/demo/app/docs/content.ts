@@ -53,43 +53,57 @@ export const DOCS: DocPage[] = [
         t: 'note',
         text: 'Add that file to your .gitignore before you paste anything into it. With no key the library falls back to the replay transport, so a checkout without one still runs against recorded fixtures rather than crashing.',
       },
-      { t: 'h', text: 'Create a resolver in a Server Action' },
+      { t: 'h', text: 'Wrap your app in the provider' },
       {
         t: 'p',
-        text: 'This is the only place the key is used. The client sends decisions and data; it never names a model or a transport, so the endpoint cannot be turned into an open proxy to your key.',
+        text: '`jev-ui/action` is a ready-made Server Action. The key is read there, on the server — the browser never sees it, and because the client passes only decisions and data, it cannot be turned into a general proxy to your key.',
       },
-      {
-        t: 'code',
-        lang: 'tsx',
-        text: `// app/actions.ts
-'use server';
-import { createResolver } from 'jev-ui/server';
-import type { BaseState, Decision } from 'jev-ui/server';
-
-const resolve = createResolver();
-
-export async function askJev(decisions: Decision[], base: BaseState) {
-  return resolve(decisions, base);
-}`,
-      },
-      { t: 'h', text: 'Wrap your app in the provider' },
       {
         t: 'code',
         lang: 'tsx',
         text: `// app/providers.tsx
 'use client';
 import { JevProvider } from 'jev-ui';
-import { askJev } from './actions';
+import { askJev } from 'jev-ui/action';
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <JevProvider
-      resolve={askJev}
-      state={{ app: { role: 'analyst', familiarity: 'returning' } }}
-    >
+    <JevProvider resolve={askJev} state={{ app: { role: 'analyst' } }}>
       {children}
     </JevProvider>
   );
+}`,
+      },
+      { t: 'h', text: 'Configuration' },
+      {
+        t: 'p',
+        text: 'Everything is environment-driven, so the common case needs no code of your own.',
+      },
+      {
+        t: 'table',
+        head: ['variable', 'default', 'what it does'],
+        rows: [
+          ['`TYPESAFE_API_KEY`', '—', 'Your key. Server-side only.'],
+          ['`JEV_TRANSPORT`', '`live` with a key, else `replay`', '`live`, `record`, `replay`, `mock`'],
+          ['`JEV_MODEL`', '`jev-latest`', 'Model id to send'],
+          ['`JEV_FIXTURES_DIR`', '`fixtures`', 'Where `record` writes and `replay` reads'],
+        ],
+      },
+      {
+        t: 'p',
+        text: 'Write the action yourself when you need something the environment cannot express — a custom transport, per-request model selection, or your own pricing table:',
+      },
+      {
+        t: 'code',
+        lang: 'ts',
+        text: `// app/actions.ts
+'use server';
+import { createResolver } from 'jev-ui/server';
+
+const resolve = createResolver({ model: 'jev-1.13.0', pricing: myRates });
+
+export async function askJev(decisions, state) {
+  return resolve(decisions, state);
 }`,
       },
       { t: 'h', text: 'Render a judgment' },

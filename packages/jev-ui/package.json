@@ -16,7 +16,8 @@
   "sideEffects": false,
   "exports": {
     ".": "./src/index.ts",
-    "./server": "./src/server.ts"
+    "./server": "./src/server.ts",
+    "./action": "./src/action.ts"
   },
   "publishConfig": {
     "exports": {
@@ -27,6 +28,10 @@
       "./server": {
         "types": "./dist/server.d.ts",
         "default": "./dist/server.js"
+      },
+      "./action": {
+        "types": "./dist/action.d.ts",
+        "default": "./dist/action.js"
       }
     }
   },

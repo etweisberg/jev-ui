@@ -3,7 +3,7 @@
 import { JevProvider, JevStatus, useJev } from 'jev-ui';
 import { usePathname } from 'next/navigation';
 import { useEffect, type ReactNode } from 'react';
-import { askJev } from '../actions';
+import { askJev } from 'jev-ui/action';
 
 /**
  * The remembered answers are per screen. Without this, navigating from the dropdown demo

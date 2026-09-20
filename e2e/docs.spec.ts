@@ -32,6 +32,23 @@ test.describe('the docs site', () => {
     await expect(page.getByTestId('install-copy')).toBeVisible();
   });
 
+  test('the site links back to the repository', async ({ page }) => {
+    await page.goto('/');
+    const link = page.getByTestId('nav-github');
+    await expect(link).toBeVisible();
+    await expect(link).toHaveAttribute('href', 'https://github.com/etweisberg/jev-ui');
+  });
+
+  test('getting started leads with the ready-made action, not boilerplate', async ({ page }) => {
+    await page.goto('/docs/getting-started');
+    const text = await page.locator('article').innerText();
+    expect(text).toContain("from 'jev-ui/action'");
+    expect(text).toContain('TYPESAFE_API_KEY');
+    // The environment table is the configuration surface.
+    expect(text).toContain('JEV_TRANSPORT');
+    expect(text).toContain('JEV_FIXTURES_DIR');
+  });
+
   test('the docs index links every page', async ({ page }) => {
     await page.goto('/docs');
     for (const slug of SLUGS) {

@@ -92,6 +92,17 @@ export function Nav() {
           </div>
         ) : null}
       </div>
+
+      <a
+        href="https://github.com/etweisberg/jev-ui"
+        target="_blank"
+        rel="noreferrer"
+        className="tab"
+        data-testid="nav-github"
+        style={{ marginLeft: 'auto' }}
+      >
+        github ↗
+      </a>
     </nav>
   );
 }

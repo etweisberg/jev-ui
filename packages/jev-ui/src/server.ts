@@ -63,6 +63,20 @@ export function pickTransportName(): TransportName {
   return process.env.TYPESAFE_API_KEY ? 'live' : 'replay';
 }
 
+/**
+ * Configuration read from the environment, so the zero-config setup needs no code.
+ *
+ * JEV_TRANSPORT    live | record | replay | mock
+ * JEV_MODEL        model id, default jev-latest
+ * JEV_FIXTURES_DIR where record writes and replay reads, default ./fixtures
+ */
+export function resolverOptionsFromEnv(): ResolverOptions {
+  return {
+    fixturesDir: process.env.JEV_FIXTURES_DIR ?? 'fixtures',
+    model: process.env.JEV_MODEL ?? DEFAULT_MODEL,
+  };
+}
+
 function buildTransport(
   name: TransportName,
   fixturesDir?: string,
