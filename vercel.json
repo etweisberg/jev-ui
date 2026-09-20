@@ -3,5 +3,6 @@
   "buildCommand": "bun run --filter demo build",
   "installCommand": "bun install --frozen-lockfile",
   "outputDirectory": "apps/demo/.next",
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD -- apps/demo packages/jev-ui vercel.json bun.lock package.json"
 }

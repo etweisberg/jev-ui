@@ -1,9 +1,13 @@
 name: ci
 
+# Documentation-only changes cannot break the build, so they do not spend a CI run.
+# Everything else — library, demo, e2e, workflows, lockfile — still runs the full suite.
 on:
   push:
     branches: [main]
+    paths-ignore: ['**.md', 'LICENSE', '.gitignore']
   pull_request:
+    paths-ignore: ['**.md', 'LICENSE', '.gitignore']
 
 # The suite never calls the API: unit tests use the mock transport and the browser tests
 # replay committed fixtures. TYPESAFE_API_KEY is deliberately absent here — its absence is
