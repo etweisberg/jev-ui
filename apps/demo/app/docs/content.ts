@@ -563,42 +563,6 @@ const [cost, setCost] = useState<DecisionCost>();
           ['auto', 'Live, falling back to fixtures when the call fails.'],
         ],
       },
-      { t: 'h', text: 'Deploying with replay' },
-      {
-        t: 'p',
-        text: 'Two things catch people out when a deployed app serves recorded answers rather than live ones.',
-      },
-      {
-        t: 'p',
-        text: 'First, bundling. Fixtures are read through a path built at runtime, which Next.js file tracing cannot follow, so they are missing from the deployed function and every judgment throws. Tell the bundler to include them:',
-      },
-      {
-        t: 'code',
-        lang: 'ts',
-        text: `// next.config.ts
-const config: NextConfig = {
-  outputFileTracingIncludes: {
-    '/**': ['./fixtures/**'],
-  },
-};`,
-      },
-      {
-        t: 'p',
-        text: 'Second, failure mode. `replay` throws on a miss, which is right for a test run and wrong for a live page — one unrecorded state takes the route down. Use `auto` in production: it calls the API, and serves the recording if that call fails for any reason, including a missing key or a spent quota.',
-      },
-      {
-        t: 'note',
-        text: 'A fallback is never silent. The outcome reports `replay (live failed)` as its transport, so the Inspector shows a degraded page as degraded.',
-      },
-      { t: 'h', text: 'Fixtures' },
-      {
-        t: 'p',
-        text: 'A fixture is keyed on the question, the state that question saw, and the model — deliberately not on the decision id, which is per-instance and changes between reloads. Adding a judgment elsewhere on the page therefore does not invalidate the ones already recorded.',
-      },
-      {
-        t: 'note',
-        text: 'Replay throws on a miss instead of falling through to a live call. A missing fixture should be a loud failure, not an accidental charge and a nondeterministic test.',
-      },
       { t: 'h', text: 'Testing without spending anything' },
       {
         t: 'list',
