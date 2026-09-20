@@ -1,5 +1,8 @@
 # jev-ui
 
+[![npm](https://img.shields.io/npm/v/jev-ui)](https://www.npmjs.com/package/jev-ui)
+[![ci](https://github.com/etweisberg/jev-ui/actions/workflows/ci.yml/badge.svg)](https://github.com/etweisberg/jev-ui/actions/workflows/ci.yml)
+
 React components that decide **which** component to render, **how** to order a list, and
 **whether** to show an affordance — from calibrated judgments returned by
 [TypeSafe](https://docs.typesafe.ai)'s Jev.
