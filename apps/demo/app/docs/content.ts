@@ -84,7 +84,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
         head: ['variable', 'default', 'what it does'],
         rows: [
           ['`TYPESAFE_API_KEY`', '—', 'Your key. Server-side only.'],
-          ['`JEV_TRANSPORT`', '`live` with a key, else `replay`', '`live`, `record`, `replay`, `mock`'],
+          ['`JEV_TRANSPORT`', '`live` with a key, else `replay`', '`live`, `record`, `replay`, `mock`, `auto`'],
           ['`JEV_MODEL`', '`jev-latest`', 'Model id to send'],
           ['`JEV_FIXTURES_DIR`', '`fixtures`', 'Where `record` writes and `replay` reads'],
         ],
@@ -560,7 +560,35 @@ const [cost, setCost] = useState<DecisionCost>();
           ['record', 'Live, then writes one fixture per decision.'],
           ['replay', 'Fixtures only. Throws on a miss rather than going live.'],
           ['mock', 'Deterministic synthetic answers. No key, no network.'],
+          ['auto', 'Live, falling back to fixtures when the call fails.'],
         ],
+      },
+      { t: 'h', text: 'Deploying with replay' },
+      {
+        t: 'p',
+        text: 'Two things catch people out when a deployed app serves recorded answers rather than live ones.',
+      },
+      {
+        t: 'p',
+        text: 'First, bundling. Fixtures are read through a path built at runtime, which Next.js file tracing cannot follow, so they are missing from the deployed function and every judgment throws. Tell the bundler to include them:',
+      },
+      {
+        t: 'code',
+        lang: 'ts',
+        text: `// next.config.ts
+const config: NextConfig = {
+  outputFileTracingIncludes: {
+    '/**': ['./fixtures/**'],
+  },
+};`,
+      },
+      {
+        t: 'p',
+        text: 'Second, failure mode. `replay` throws on a miss, which is right for a test run and wrong for a live page — one unrecorded state takes the route down. Use `auto` in production: it calls the API, and serves the recording if that call fails for any reason, including a missing key or a spent quota.',
+      },
+      {
+        t: 'note',
+        text: 'A fallback is never silent. The outcome reports `replay (live failed)` as its transport, so the Inspector shows a degraded page as degraded.',
       },
       { t: 'h', text: 'Fixtures' },
       {

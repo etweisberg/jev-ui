@@ -117,7 +117,7 @@ Everything is environment-driven, so the common case needs no code.
 | Variable | Default | What it does |
 | --- | --- | --- |
 | `TYPESAFE_API_KEY` | — | Your key. Server-side only. |
-| `JEV_TRANSPORT` | `live` with a key, else `replay` | `live`, `record`, `replay`, or `mock` |
+| `JEV_TRANSPORT` | `live` with a key, else `replay` | `live`, `record`, `replay`, `mock`, `auto` |
 | `JEV_MODEL` | `jev-latest` | Model id to send |
 | `JEV_FIXTURES_DIR` | `fixtures` | Where `record` writes and `replay` reads |
 

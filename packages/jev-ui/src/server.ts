@@ -33,6 +33,7 @@ export { createLiveTransport } from './transport/live.js';
 export { createMockTransport } from './transport/mock.js';
 export { createRecordTransport } from './transport/record.js';
 export { createReplayTransport } from './transport/replay.js';
+export { createFallbackTransport } from './transport/fallback.js';
 export type { Transport, TransportContext } from './transport/types.js';
 
 import type { ModelPrice } from './core/pricing.js';
@@ -40,12 +41,13 @@ import type { BaseState, Decision, ResolveOutcome } from './core/types.js';
 import { createLiveTransport } from './transport/live.js';
 import { createMockTransport } from './transport/mock.js';
 import { createRecordTransport } from './transport/record.js';
+import { createFallbackTransport } from './transport/fallback.js';
 import { createReplayTransport } from './transport/replay.js';
 import type { Transport } from './transport/types.js';
 
 export const DEFAULT_MODEL = 'jev-latest';
 
-export type TransportName = 'live' | 'record' | 'replay' | 'mock';
+export type TransportName = 'live' | 'record' | 'replay' | 'mock' | 'auto';
 
 export interface ResolverOptions {
   /** Where fixtures live. Required for replay and record. */
@@ -93,6 +95,13 @@ function buildTransport(
     case 'replay':
       if (!fixturesDir) throw new Error('jev-ui: replay transport needs a fixturesDir');
       return createReplayTransport(fixturesDir);
+    case 'auto':
+      // Live, degrading to recordings rather than failing the page.
+      if (!fixturesDir) throw new Error('jev-ui: auto transport needs a fixturesDir');
+      return createFallbackTransport(
+        createLiveTransport(pricing),
+        createReplayTransport(fixturesDir),
+      );
     default:
       throw new Error(`jev-ui: unknown transport "${name}"`);
   }

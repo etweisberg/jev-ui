@@ -73,6 +73,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             border-bottom: 1px solid var(--line);
           }
           .tab {
+            /* A <button> carries a UA background and border; both are cleared here so
+               .tab.on can supply its own by specificity rather than an inline override. */
+            background: transparent;
+            border: 1px solid transparent;
             padding: 7px 14px;
             border-radius: 6px;
             font-size: 11px;
@@ -84,6 +88,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           }
           .tab:hover { color: var(--fg); background: var(--line-soft); }
           .tab.on { background: var(--ink); color: var(--on-ink); }
+          .tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
           .tab.brand { font-weight: 600; letter-spacing: 0.18em; color: var(--fg); }
           .tab.brand.on { color: var(--on-ink); }
 
