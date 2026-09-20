@@ -1,3 +1,20 @@
+<img width="1280" height="640" alt="jev-ui-github-banner" src="https://github.com/user-attachments/assets/66ef43d2-5e33-45ae-ba3a-b323bf72915e" />![Uploadin<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">jev-ui — Probabilistic UI for React</title>
+  <desc id="desc">The jev-ui wordmark and tagline next to three left-aligned probability bars, with the longest bar highlighted.</desc>
+  <rect width="1280" height="640" fill="#E8E6E0"/>
+  <g>
+    <rect x="144" y="224" width="336" height="56" rx="28" fill="#B64E26"/>
+    <rect x="144" y="312" width="264" height="56" rx="28" fill="#1A1916"/>
+    <rect x="144" y="400" width="188" height="56" rx="28" fill="#1A1916"/>
+  </g>
+  <g fill="#1A1916" font-family="Arial, sans-serif">
+    <text x="592" y="305" font-size="96" font-weight="700" letter-spacing="-4">jev-ui</text>
+    <text x="598" y="365" font-size="28" font-weight="500" letter-spacing="0.4">Probabilistic UI for React</text>
+  </g>
+</svg>
+g jev-ui-github-banner.svg…]()
+
+
 # jev-ui
 
 [![npm](https://img.shields.io/npm/v/jev-ui)](https://www.npmjs.com/package/jev-ui)
