@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" role="img" aria-labelledby="title">
+  <title id="title">jev-ui</title>
+  <rect width="16" height="16" fill="#E8E6E0"/>
+  <rect x="3" y="4" width="10" height="2" rx="1" fill="#B64E26"/>
+  <rect x="3" y="7" width="8" height="2" rx="1" fill="#1A1916"/>
+  <rect x="3" y="10" width="5" height="2" rx="1" fill="#1A1916"/>
+</svg>
