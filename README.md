@@ -1,6 +1,18 @@
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/28edadc9-fda8-48c1-a5be-8789c1b0c756" alt="jev-ui — probabilistic UI for React" width="880">
-</p>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-labelledby="title desc">
+  <title id="title">jev-ui — Probabilistic UI for React</title>
+  <desc id="desc">The jev-ui wordmark and tagline next to three left-aligned probability bars, with the longest bar highlighted.</desc>
+  <rect width="1280" height="640" fill="#E8E6E0"/>
+  <g>
+    <rect x="330" y="90" width="230" height="36" rx="18" fill="#B64E26"/>
+    <rect x="330" y="142" width="180" height="36" rx="18" fill="#1A1916"/>
+    <rect x="330" y="194" width="128" height="36" rx="18" fill="#1A1916"/>
+  </g>
+  <g fill="#1A1916" font-family="Arial, sans-serif">
+    <text x="666" y="154" font-size="74" font-weight="700" letter-spacing="-3">jev-ui</text>
+    <text x="670" y="202" font-size="24" font-weight="500" letter-spacing="0.25">Probabilistic UI for React</text>
+  </g>
+</svg>
+
 
 # jev-ui
 
