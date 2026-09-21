@@ -3,31 +3,55 @@
 import { useEffect, useState } from 'react';
 import type { Heading } from './content';
 
+/** How far below the sticky tab bar a heading counts as "the one you are reading". */
+const TOP_OFFSET = 100;
+
 /**
  * Section list for the current page, with the section you are reading marked.
  *
- * Uses IntersectionObserver rather than scroll maths: it reports which headings are on
- * screen without running work on every scroll frame.
+ * Computed from the headings' positions rather than with IntersectionObserver. An
+ * observer needs a heading to enter a band near the top of the viewport, which the last
+ * heading on a page can never do — the page runs out of scroll first, so the final entry
+ * would never highlight. Reading positions directly has no such blind spot, and the work
+ * is throttled to one frame.
  */
 export function Toc({ headings }: { headings: Heading[] }) {
   const [active, setActive] = useState(headings[0]?.id ?? '');
 
   useEffect(() => {
     if (headings.length === 0) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const onScreen = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-        if (onScreen[0]?.target.id) setActive(onScreen[0].target.id);
-      },
-      { rootMargin: '-80px 0px -60% 0px' },
-    );
-    for (const heading of headings) {
-      const element = document.getElementById(heading.id);
-      if (element) observer.observe(element);
-    }
-    return () => observer.disconnect();
+    let frame = 0;
+
+    const update = () => {
+      frame = 0;
+      const scrolled = window.scrollY + window.innerHeight;
+      const atBottom = scrolled >= document.documentElement.scrollHeight - 2;
+      if (atBottom) {
+        // Whatever the maths says, the last section is what you are looking at.
+        setActive(headings[headings.length - 1]!.id);
+        return;
+      }
+
+      let current = headings[0]!.id;
+      for (const heading of headings) {
+        const element = document.getElementById(heading.id);
+        if (element && element.getBoundingClientRect().top <= TOP_OFFSET) current = heading.id;
+      }
+      setActive(current);
+    };
+
+    const schedule = () => {
+      if (frame === 0) frame = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    return () => {
+      if (frame) cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
+    };
   }, [headings]);
 
   if (headings.length === 0) return null;

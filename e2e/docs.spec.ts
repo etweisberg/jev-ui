@@ -82,6 +82,16 @@ test.describe('the docs site', () => {
     }
   });
 
+  test('the last entry highlights — the one a scroll-band observer always misses', async ({ page }) => {
+    await page.goto('/docs/state');
+    const entries = page.locator('[data-testid^="toc-"]');
+    const last = entries.last();
+    await last.click();
+    // The page cannot scroll far enough to push the final heading into a top band, so
+    // position-based tracking is what makes this work at all.
+    await expect(last).toHaveAttribute('aria-current', 'true');
+  });
+
   test('clicking a contents entry jumps to that section', async ({ page }) => {
     await page.goto('/docs/state');
     await page.getByTestId('toc-updating-it').click();
